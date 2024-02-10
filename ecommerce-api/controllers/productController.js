@@ -43,5 +43,17 @@ exports.deleteProduct = async (req,res) => {
 
 //Update Quantity of a product
 exports.updateQuantity = async (req,res) => {
-    
+    try {
+        const productId = req.params.id;
+        const { number } = req.query;
+        const product = await Product.findById(productId);
+        if (!product) {
+          return res.status(404).json({ data: { message: 'Product not found' } });
+        }
+        product.quantity += parseInt(number);
+        await product.save();
+        res.json({ data: { product, message: 'Updated successfully' } });
+      } catch (error) {
+        res.status(500).json({ error: error.message });
+      }
 };
