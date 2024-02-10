@@ -27,10 +27,21 @@ exports.listProducts =async (req,res) => {
 
 //Delete a product
 exports.deleteProduct = async (req,res) => {
-
+    try {
+        const productId = req.params.id;
+        const deletedProduct = await Product.findByIdAndDelete(productId);
+    
+        if (!deletedProduct) {
+          return res.status(404).json({ data: { message: 'Product not found' } });
+        }
+    
+        res.json({ data: { message: 'Product deleted' } });
+      } catch (error) {
+        res.status(500).json({ error: error.message });
+      }
 };
 
 //Update Quantity of a product
 exports.updateQuantity = async (req,res) => {
-
+    
 };
