@@ -17,7 +17,12 @@ module.exports.createProduct = async (req,res) => {
 
 //List all products
 exports.listProducts =async (req,res) => {
-
+    try {
+        const products = await Product.find();
+        res.json({ data: { products } });
+      } catch (error) {
+        res.status(500).json({ error: error.message });
+      }
 };
 
 //Delete a product
