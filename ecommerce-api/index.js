@@ -2,10 +2,11 @@
 const express = require('express');
 //require mongoose for mongodb database
 const mongoose =require('mongoose');
+const bodyParser=require('body-parser');
 //define a port to listen
 const port = 4000;
 const app = express();
-
+app.use(bodyParser.json());
 //getting the database connection from config file
 const db= require('./config/mongoose');
 //make the app listen to server on port 4000
