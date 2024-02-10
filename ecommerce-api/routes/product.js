@@ -1,6 +1,6 @@
 //setting up the router
 const express= require('express');
-const router= express.Router;
+const router= express.Router();
 const productController = require('../controllers/productController');
 //seeting up the routes for controller actions
 router.post('/create',productController.createProduct);
