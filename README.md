@@ -40,10 +40,8 @@ Follow these steps to set up the project on your local system:
 json
 Copy code
 {
-  "product": {
     "name": "Laptop",
     "quantity": 10
-  }
 }
 
 ### List Products
